@@ -1,8 +1,0 @@
-{
- "args": [
-  "arduino-m0"
- ],
- "sh": false,
- "env": {},
- "port": "JTAG"
-}

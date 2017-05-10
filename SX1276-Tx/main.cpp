@@ -1,6 +1,6 @@
 #include <cox.h>
 
-SX1272_6Chip &SX1276 = attachSX1276MB1LASModule();
+SX127xChip &SX1276 = attachSX1276MB1LASModule();
 Timer sendTimer;
 RadioPacket *frame = NULL;
 uint32_t sent = 0;

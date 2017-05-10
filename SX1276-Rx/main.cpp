@@ -1,6 +1,6 @@
 #include <cox.h>
 
-SX1272_6Chip &SX1276 = attachSX1276MB1LASModule();
+SX127xChip &SX1276 = attachSX1276MB1LASModule();
 Timer tRSSI;
 uint32_t tRxStarted;
 int16_t rssiRxStarted;
@@ -17,7 +17,7 @@ static void printRxDone(void *args) {
 
   printf("Rx is done!: RSSI:%d dB, CRC:%s, Length:%u, (",
          rxFrame->power,
-         rxFrame->crc_ok ? "OK" : "FAIL",
+         (rxFrame->result == RadioPacket::SUCCESS) ? "OK" : "FAIL",
          rxFrame->len);
   uint16_t i;
   for (i = 0; i < rxFrame->len; i++)

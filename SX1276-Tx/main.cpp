@@ -14,7 +14,7 @@ int8_t txPower;
 bool iq;
 uint8_t syncword;
 
-static void eventOnTxDone(void *ctx, bool success) {
+static void eventOnTxDone(void *ctx, bool success, GPIOInterruptInfo_t *) {
   printf("[%lu us] Tx %s!\n", micros(), (success) ? "SUCCESS" : "FAIL");
   delete frame;
   frame = NULL;
@@ -72,7 +72,7 @@ static void appStart() {
 
   SX1276.setChannel(917100000);
   SX1276.setTxPower(txPower);
-  SX1276.onTxDone(eventOnTxDone, NULL);
+  SX1276.onTxDone = eventOnTxDone;
   SX1276.wakeup();
   SX1276.cca();
 
